@@ -40,3 +40,5 @@ Route::get('/register', function () {
 Route::get('/recover', function () {
     return view('Admin/recover_password');
 });
+Route::view('login','Admin/login')->name('login');
+Route::post('loginuser',[userController::class,'loginuser'])->name('loginuser');
