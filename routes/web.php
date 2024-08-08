@@ -28,9 +28,9 @@ Route::get('/contact', function () {
 Route::get('/ahtesham', function () {
     return view('ahtesham');
 });
-Route::get('/dashboard', function () {
-    return view('Admin/index');
-});
+// Route::get('/dashboard', function () {
+//     return view('Admin/index');
+// });
 Route::get('/login', function () {
     return view('Admin/login');
 });
@@ -42,3 +42,6 @@ Route::get('/recover', function () {
 });
 Route::view('login','Admin/login')->name('login');
 Route::post('loginuser',[userController::class,'loginuser'])->name('loginuser');
+
+Route::view('Register','Admin/register')->name('register');
+Route::post('registeruser',[userController::class,'registeruser'])->name('registeruser');
