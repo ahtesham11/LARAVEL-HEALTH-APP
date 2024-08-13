@@ -24,6 +24,9 @@ class UserController extends Controller
         if($user){
             return redirect()->route('login');
         }
+        else{
+            return redirect()->back()->withErrors('Registration failed. Please try again.');
+        }
     }
     public function loginuser(Request $request)
     {
