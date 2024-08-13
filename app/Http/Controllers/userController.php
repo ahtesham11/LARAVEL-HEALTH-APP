@@ -8,26 +8,32 @@ class UserController extends Controller
 {
     public function registeruser(Request $request)
     {
+        {
+            try {
+                $data = $request->validate([
+                    'name' => 'required|string|max:255',
+                    'email' => 'required|email|unique:users,email',
+                    'password' => 'required|confirmed',
+                ]);
         
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email', // Ensure email is unique in the users table
-            'password' => 'required|confirmed',
-        ]);
-
-        // Hash the password before storing it in the database
-        $data['password'] = bcrypt($data['password']);
-       
-        // // Debugging: dump the validated data (remove after debugging)
-        // dd($data);
-        $user = User::create($data);
-        if($user){
-            return redirect()->route('login');
-        }
-        else{
-            return redirect()->back()->withErrors('Registration failed. Please try again.');
-        }
+                $data['password'] = bcrypt($data['password']);
+        
+                $user = User::create($data);
+        
+                if ($user) {
+                    return redirect()->route('login');
+                }
+            } catch (\Illuminate\Database\QueryException $e) {
+                // Check if the exception is related to a duplicate entry
+                if ($e->errorInfo[1] == 1062) {
+                    return redirect()->back()->withErrors(['email' => 'The email address is already registered.']);
+                } else {
+                    // Handle other potential errors
+                    return redirect()->back()->withErrors('An error occurred. Please try again.');
+                }
+            }
     }
+}
     public function loginuser(Request $request)
     {
         $credential=$request->validate([
