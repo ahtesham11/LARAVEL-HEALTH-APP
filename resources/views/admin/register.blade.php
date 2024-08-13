@@ -26,7 +26,7 @@
       <form action="{{url('registeruser')}}" method="post">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name='names' placeholder="Full name">
+          <input type="text" class="form-control" name='name' placeholder="Full name">
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>

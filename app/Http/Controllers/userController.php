@@ -10,15 +10,14 @@ class UserController extends Controller
     {
         
         $data = $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|confirmed', // Corrected validation rule
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email', // Ensure email is unique in the users table
+            'password' => 'required|confirmed',
         ]);
 
         // Hash the password before storing it in the database
         $data['password'] = bcrypt($data['password']);
-        dd($data);
-        exit;
+       
         // // Debugging: dump the validated data (remove after debugging)
         // dd($data);
         $user = User::create($data);
