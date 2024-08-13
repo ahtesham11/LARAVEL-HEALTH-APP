@@ -5,14 +5,18 @@ use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
-    public function Register(Request $request)
+    public function registeruser(Request $request)
     {
-        $credential=$request->validate([
+        $data=$request->validate([
             'email'=>'required|email',
             'password'=>'password|confirmed'
         ]);
-        if(Auth::attempt($credential)){
-            return redirect()->route('dashboard');
+        // if(Auth::attempt($credential)){
+        //     return redirect()->route('dashboard');
+        // }
+        $user=User::create($data);
+        if($user){
+            return redirect()->route('login');
         }
     }
     public function loginuser(Request $request)

@@ -43,5 +43,5 @@ Route::get('/recover', function () {
 Route::view('login','admin/login')->name('login');
 Route::post('loginuser',[userController::class,'loginuser'])->name('loginuser');
 
-Route::view('Register','Admin/register')->name('register');
+Route::view('register','Admin/register')->name('register');
 Route::post('registeruser',[userController::class,'registeruser'])->name('registeruser');
