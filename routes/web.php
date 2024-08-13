@@ -1,7 +1,8 @@
 <?php
+use App\Http\Controllers\UserController;
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controller\userController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,8 +41,9 @@ Route::get('/register', function () {
 Route::get('/recover', function () {
     return view('Admin/recover_password');
 });
-Route::view('login','admin/login')->name('login');
-Route::post('loginuser',[userController::class,'loginuser'])->name('loginuser');
-
 Route::view('register','Admin/register')->name('register');
-Route::post('registeruser',[userController::class,'registeruser'])->name('registeruser');
+Route::view('login','Admin/login')->name('login');
+Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
+Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
+
+
