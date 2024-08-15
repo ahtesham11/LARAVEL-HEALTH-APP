@@ -6,9 +6,14 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only('dashboard');
+    }
+
     public function registeruser(Request $request)
     {
-        {
+       
             try {
                 $data = $request->validate([
                     'name' => 'required|string|max:255',
@@ -33,21 +38,31 @@ class UserController extends Controller
                 }
             }
     }
-}
+
     public function loginuser(Request $request)
     {
-        $credential=$request->validate([
-            'email'=>'required|email',
-            'password'=>'password|confirmed'
+        // Validate the input
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
         ]);
-        if(Auth::attempt($credential)){
+    
+        // Attempt to log in
+        if (Auth::attempt($credentials)) {
+            // Redirect to dashboard on successful login
             return redirect()->route('dashboard');
+        } else {
+            // Redirect back with error message on failed login
+            return redirect()->back()->withErrors([
+                'email' => 'The provided credentials do not match our records.',
+            ]);
         }
     }
-    function dashboard(){
+    
+    function dashboardPage(){
         if(Auth::check()){
-            return view('dashboard');
-
+            return view('logincomplete');
+            // echo "MUJYH AYA GYI HA LARAVEL";
         }
         else{
             return redirect()->route('login');

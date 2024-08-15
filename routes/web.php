@@ -42,8 +42,12 @@ Route::get('/recover', function () {
     return view('Admin/recover_password');
 });
 Route::view('register','Admin/register')->name('register');
-Route::view('login','Admin/login')->name('login');
+Route::view('login','admin/login')->name('login');
+Route::get('dashboard',[UserController::class,'dashboardPage'])->name('dashboard');
+Route::view('logincomplete','Admin/index')->name('logincomplete');
 Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
 Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
-
+// Route::middleware(['auth'])->group(function () {
+//     Route::get('/dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+// });
 
