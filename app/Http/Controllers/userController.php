@@ -61,7 +61,7 @@ class UserController extends Controller
     
     function dashboardPage(){
         if(Auth::check()){
-            return view('logincomplete');
+            return redirect()->route('logincomplete');
             // echo "MUJYH AYA GYI HA LARAVEL";
         }
         else{
