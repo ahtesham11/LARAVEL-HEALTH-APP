@@ -6,11 +6,10 @@ use App\Models\User;
 
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth')->only('dashboard');
-    }
-
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->only('dashboard');
+    // }
     public function registeruser(Request $request)
     {
        
@@ -20,7 +19,6 @@ class UserController extends Controller
                     'email' => 'required|email|unique:users,email',
                     'password' => 'required|confirmed',
                 ]);
-        
                 $data['password'] = bcrypt($data['password']);
         
                 $user = User::create($data);
@@ -38,7 +36,6 @@ class UserController extends Controller
                 }
             }
     }
-
     public function loginuser(Request $request)
     {
         // Validate the input
@@ -58,20 +55,12 @@ class UserController extends Controller
             ]);
         }
     }
-    
     function dashboardPage(){
-        if(Auth::check()){
-            return redirect()->route('logincomplete');
-            // echo "MUJYH AYA GYI HA LARAVEL";
-        }
-        else{
-            return redirect()->route('login');
-        }
+        return redirect()->route('logincomplete');
     }
     function logout(){
         Auth::logout();
         return redirect()->route('login');
     }
 }
-
 ?>

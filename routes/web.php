@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 Route::get('/ahtesham', function () {
     return view('ahtesham');
 });
@@ -43,8 +43,10 @@ Route::get('/recover', function () {
 });
 Route::view('register','Admin/register')->name('register');
 Route::view('login','admin/login')->name('login');
-Route::get('dashboard',[UserController::class,'dashboardPage'])->name('dashboard');
-Route::view('logincomplete','Admin/index')->name('logincomplete');
+Route::get('dashboard', [UserController::class, 'dashboardPage'])
+    ->name('dashboard')
+    ->middleware('webgard');
+Route::view('logincomplete','Admin/index')->name('logincomplete')->middleware('webgard');;
 Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
 Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
