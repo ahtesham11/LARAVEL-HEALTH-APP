@@ -41,7 +41,7 @@ Route::get('/contact', function () {
 Route::get('/recover', function () {
     return view('Admin/recover_password');
 });
-Route::view('register','Admin/register')->name('register');
+Route::view('register','Admin/register')->name('register')->middleware('webgard');;
 Route::view('login','admin/login')->name('login');
 Route::get('dashboard', [UserController::class, 'dashboardPage'])
     ->name('dashboard')
