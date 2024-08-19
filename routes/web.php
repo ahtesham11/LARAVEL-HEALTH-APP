@@ -33,7 +33,7 @@ Route::view('login','admin/login')->name('login');
 Route::get('dashboard', [UserController::class, 'dashboardPage'])
     ->name('dashboard')
     ->middleware('webgard');
-Route::view('logincomplete','Admin/index')->name('logincomplete')->middleware('webgard');;
+Route::view('logincomplete','Admin/main_dashboard')->name('logincomplete')->middleware('webgard');;
 Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
 Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
