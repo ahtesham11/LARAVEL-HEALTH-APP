@@ -10,8 +10,7 @@ use App\Models\Room;
 class RoomAdd extends Controller
 {
     public function index(){
-        $rooms=Room::all();
-        // var_dump($rooms);
-        return view('admin.rooms',compact(rooms));
+        $rooms = Room::all(); // Fetch all room records
+        return view('admin.rooms', compact('rooms'));
     }
 }

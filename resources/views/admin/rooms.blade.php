@@ -37,12 +37,12 @@
               </tr>
               </thead>
               <tbody>
-                @foreach($room as $rooms)
+                @foreach($rooms as $room)
                 <tr>
-                    <td>{{ $rooms->ID }}</td>
-                    <td>{{ $rooms->room_number }}</td>
-                    <td>{{ $rooms->room_type }}</td>
-                    <td>{{ $rooms->capacity }}</td>
+                    <td>{{ $room->id }}</td>
+                    <td>{{ $room->room_number }}</td>
+                    <td>{{ $room->room_type }}</td>
+                    <td>{{ $room->capacity }}</td>
                     <td>STATUS</td>
                 </tr>
                 @endforeach
