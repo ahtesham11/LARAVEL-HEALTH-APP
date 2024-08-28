@@ -34,6 +34,7 @@
                 <th>Platform(s)</th>
                 <th>Engine version</th>
                 <th>CSS grade</th>
+                <th>Action</th>
               </tr>
               </thead>
               <tbody>
@@ -44,6 +45,14 @@
                     <td>{{ $room->room_type }}</td>
                     <td>{{ $room->capacity }}</td>
                     <td>STATUS</td>
+                    <td> 
+                      <button type="button" class="btn btn-sm btn-outline-success">
+                        <i class="fa fa-home"></i> Edit Room
+                      </button>
+                      <button type="button" class="btn btn-sm btn-outline-danger">
+                        <i class="fa fa-bug"></i> Change Status
+                      </button>
+                    </td>
                 </tr>
                 @endforeach
               </tbody>
@@ -54,6 +63,7 @@
                 <th>Platform(s)</th>
                 <th>Engine version</th>
                 <th>CSS grade</th>
+                <th>Action</th>
               </tr>
               </tfoot>
             </table>
