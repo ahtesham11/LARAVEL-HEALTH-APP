@@ -11,6 +11,7 @@ class RoomAdd extends Controller
 {
     public function index(){
         $rooms=Room::all();
-        return view('admin.rooms',compact($rooms));
+        // var_dump($rooms);
+        return view('admin.rooms',compact(rooms));
     }
 }
