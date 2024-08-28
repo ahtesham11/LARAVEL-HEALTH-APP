@@ -1,7 +1,7 @@
 <?php
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\RoomAdd;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -37,5 +37,5 @@ Route::view('logincomplete','Admin/main_dashboard')->name('logincomplete')->midd
 Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
 Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
-
+Route::get('/rooms', [RoomAdd::class, 'index']);
 
