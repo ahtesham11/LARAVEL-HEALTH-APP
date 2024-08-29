@@ -39,3 +39,5 @@ Route::post('registeruser',[UserController::class,'registeruser'])->name('regist
 Route::get('logout',[UserController::class,'logout'])->name('logout');
 Route::get('/rooms', [RoomAdd::class, 'index']);
 
+Route::get('/rooms/{id}/edit', [RoomAdd::class, 'edit'])->name('rooms.edit');
+Route::put('/rooms/{id}', [RoomAdd::class, 'update'])->name('rooms.update');
