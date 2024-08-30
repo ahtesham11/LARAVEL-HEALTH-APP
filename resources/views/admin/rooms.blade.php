@@ -46,9 +46,9 @@
                     <td>{{ $room->capacity }}</td>
                     <td>STATUS</td>
                     <td> 
-                      <button type="button" class="btn btn-sm btn-outline-success">
+                      <a type="button" class="btn btn-sm btn-outline-success" href="{{ route('rooms.edit', $room->id) }}">
                         <i class="fa fa-home"></i> Edit Room
-                      </button>
+                      </a>
                       <button type="button" class="btn btn-sm btn-outline-danger">
                         <i class="fa fa-bug"></i> Change Status
                       </button>
