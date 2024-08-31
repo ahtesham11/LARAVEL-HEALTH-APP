@@ -501,7 +501,7 @@ Author URL: http://w3layouts.com
     </script>
     <!--//MENU-JS-->
     <script src="{{url('assets/js/bootstrap.min.js')}}"></script>
-
+    <script src="{{url('assets/js/toogle.js')}}">
 </body>
 
 </html>

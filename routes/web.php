@@ -37,7 +37,8 @@ Route::view('logincomplete','Admin/main_dashboard')->name('logincomplete')->midd
 Route::post('loginuser',[UserController::class,'loginuser'])->name('loginuser');
 Route::post('registeruser',[UserController::class,'registeruser'])->name('registeruser');
 Route::get('logout',[UserController::class,'logout'])->name('logout');
-Route::get('/rooms', [RoomAdd::class, 'index']);
+Route::get('/rooms', [RoomAdd::class, 'index'])->name('rooms.index');
 
 Route::get('/rooms/{id}/edit', [RoomAdd::class, 'edit'])->name('rooms.edit');
 Route::put('/rooms/{id}', [RoomAdd::class, 'update'])->name('rooms.update');
+Route::post('/rooms/{id}/toggle', [RoomAdd::class, 'toggleStatus'])->name('rooms.toggleStatus');
